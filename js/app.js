@@ -1,42 +1,53 @@
 //give function a name
 function redness(details) {
     details[`target`][`style`][`backgroundColor`] = `red`;
+    details[`target`][`style`][`fontSize`] = `3.5rem`;
 }
 // Add a keydown event listener to the document
 let header = document.getElementById('page_header');
 header.addEventListener('click', redness);
 
 
-
+function background(event) {
+  event[`target`]['style'][`backgroundColor`] = 'lightblue';
+}
 
 // Add a keydown event listener to the document
-document.addEventListener('keydown', function (space) {
-    // Check if the space key was pressed
-    if (space.code === 'Space') {
-        // Change the background color of the page to lightblue
-        document.body.style.backgroundColor = 'lightblue';
-    }
+document.addEventListener('keydown', (event) => {
+  // Check if the space key was pressed
+  if (event.code === 'Space') {
+    // Call the background function
+    background(event);
+  }
 });
 
+// function to change the image style when the user hovers over it to blur
+function hoover(event) {
+  event[`target`][`style`][`opacity`] = '0.3';
+}
 
 // Get all the images on the page
-const images = document.querySelectorAll('img');
+let images = document.querySelectorAll('img');
 
 // Add an event listener to each image
 images.forEach(image => {
-  image.addEventListener('mouseover', () => {
-    // Change the image style when the user hovers over it to blur
-    image.style.opacity = '0.3'; 
-  });
+  image.addEventListener('mouseover', hoover);
 });
 
+
+
+
+// function to Change the font size of the paragraph when it is double clicked
+function design (event){
+  event[`target`][`style`][`fontSize`] = '24px'; 
+  event[`target`][`style`][`backgroundColor`]= `blue`
+}
 // Get the p tag
-const p = document.getElementById('p');
+let p = document.getElementById('p');
 
 // Add an event listener to the paragraph
-p.addEventListener('dblclick', () => {
-  // Change the font size of the paragraph when it is double clicked
-  p.style.fontSize = '24px'; // Example size change
-  p.style.backgroundColor= `maroon`
-});
+p.addEventListener('dblclick', design);
+  
+
+
 
